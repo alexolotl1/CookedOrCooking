@@ -1,4 +1,3 @@
-// RecipeCard component - reusable card for displaying a single recipe
 export default function RecipeCard({ recipe }) {
   return (
     <div className="recipe-card">

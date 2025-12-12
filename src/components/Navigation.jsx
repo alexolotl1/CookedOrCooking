@@ -1,4 +1,3 @@
-// Navigation component - sidebar on top left
 export default function Navigation({ currentPage, onPageChange }) {
   return (
     <nav className="navigation">
