@@ -1,7 +1,7 @@
 // Recipes page
 import RecipeCard from '../components/RecipeCard';
 
-export default function Recipes({ recipes }) {
+export default function Recipes({ recipes, onRecipeClick }) {
   return (
     <div className="page">
       <h2>Recipes</h2>
@@ -9,7 +9,7 @@ export default function Recipes({ recipes }) {
       
       <div className="recipe-grid">
         {recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
+          <RecipeCard key={recipe.id} recipe={recipe} onRecipeClick={onRecipeClick} />
         ))}
       </div>
     </div>
