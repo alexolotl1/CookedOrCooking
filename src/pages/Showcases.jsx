@@ -3,6 +3,7 @@ import '../AdditionalApp.css';
 import { recipes, recipeCategories } from '../data/recipes';
 import RecipeDetail from '../components/RecipeDetail';
 import RecipeSteps from '../components/RecipeSteps';
+import { recordVote, addRecipeToViewed } from '../data/userStats';
 
 export default function Showcases() {
   const [expandedCategory, setExpandedCategory] = useState(null);
@@ -50,6 +51,7 @@ export default function Showcases() {
   const handleRecipeClick = (recipe) => {
     setSelectedRecipe(recipe);
     setShowRecipeDetail(true);
+    addRecipeToViewed(recipe.id);
   };
 
   const handleStartCooking = () => {
@@ -65,6 +67,7 @@ export default function Showcases() {
 
   const handleVote = (dishId) => {
     if (!userVote) {
+      recordVote();
       setUserVote(dishId);
       setVoteCounts(prev => ({
         ...prev,

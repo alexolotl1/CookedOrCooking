@@ -14,6 +14,7 @@ import RecipeStepsForm from './components/RecipeStepsForm';
 import RecipePreview from './components/RecipePreview';
 
 import { recipes } from './data/recipes';
+import { addRecipeToViewed, recordRecipeShared } from './data/userStats';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -22,7 +23,7 @@ export default function App() {
   const [showRecipeSteps, setShowRecipeSteps] = useState(false);
 
   const [showRecipeCreation, setShowRecipeCreation] = useState(false);
-  const [creationStep, setCreationStep] = useState(1); // 1 2 or 3
+  const [creationStep, setCreationStep] = useState(1);
   const [creationSteps, setCreationSteps] = useState([{
     number: 1,
     title: '',
@@ -46,6 +47,8 @@ export default function App() {
   const handleRecipeClick = (recipe) => {
     setSelectedRecipe(recipe);
     setShowRecipeDetail(true);
+    // Track viewed recipe
+    addRecipeToViewed(recipe.id);
   };
 
   const handleStartCooking = () => {
@@ -111,7 +114,7 @@ export default function App() {
       name: formData.name,
       description: formData.description,
       time: parseInt(formData.time),
-      image: '🍽️', // Default emoji
+      image: '🍽️',
       details: formData.details || formData.description,
       ingredients: ingredients,
       servings: parseInt(formData.servings) || 1,
@@ -120,6 +123,9 @@ export default function App() {
     };
 
     recipes.push(newRecipe);
+    
+    // Award XP for sharing recipe
+    recordRecipeShared();
 
     setPublishSuccess(true);
     setTimeout(() => {

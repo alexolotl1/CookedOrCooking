@@ -2,7 +2,7 @@ export default function Navigation({ currentPage, onPageChange }) {
   return (
     <nav className="navigation">
       <div className="nav-header">
-        <h1 className="nav-title">🍳 Cooked Or Cooking</h1>
+        <h1 className="nav-title">🥕 Cooked Or Cooking</h1>
       </div>
       <ul className="nav-list">
         <li>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { recordStepCompleted } from '../data/userStats';
 
 export default function RecipeSteps({ recipe, onClose }) {
   const [currentStep, setCurrentStep] = React.useState(0);
@@ -8,6 +9,7 @@ export default function RecipeSteps({ recipe, onClose }) {
 
   const handleNext = () => {
     if (currentStep < totalSteps - 1) {
+      recordStepCompleted();
       setCurrentStep(currentStep + 1);
     }
   };
@@ -19,6 +21,7 @@ export default function RecipeSteps({ recipe, onClose }) {
   };
 
   const handleFinish = () => {
+    recordStepCompleted();
     alert(`Congratulations! You've completed ${recipe.name}! 🎉`);
     onClose();
   };
@@ -44,10 +47,7 @@ export default function RecipeSteps({ recipe, onClose }) {
           </div>
 
           <div className="step-visual">
-            <div className="step-number-circle">{step.number}</div>
-            <div className="step-description">
-              <strong>{step.title}</strong>
-            </div>
+            {step.image}
           </div>
         </div>
 
