@@ -7,6 +7,7 @@ export default function Home() {
   const [userStats, setUserStats] = useState(null);
   const [unlockedAchievements, setUnlockedAchievements] = useState([]);
   const [lastViewedRecipes, setLastViewedRecipes] = useState([]);
+  const [completedRecipes, setCompletedRecipes] = useState(0);
 
   useEffect(() => {
     const stats = initializeUser();
@@ -21,9 +22,14 @@ export default function Home() {
       const viewed = stats.viewedRecipes
         .map(recipeId => recipes.find(r => r.id === recipeId))
         .filter(Boolean)
-        .reverse(); 
+        .reverse()
+        .slice(0, 5); 
       setLastViewedRecipes(viewed);
     }
+
+    const avgStepsPerRecipe = 6;
+    const completed = Math.floor(stats.stepsCompleted / avgStepsPerRecipe);
+    setCompletedRecipes(completed);
   }, []);
 
   if (!userStats) {
@@ -42,32 +48,44 @@ export default function Home() {
       </div>
 
       <div className="home-user-section">
-        <h2 className="user-greeting">Welcome back, {userStats.username}!</h2>
+        <div className="user-header">
+          <div className="profile-image-placeholder"></div>
+          <div className="user-info-column">
+            <h2 className="user-guest-text">Guest</h2>
+            <p className="user-join-text">Joined on Dec 3 2025</p>
+          </div>
+        </div>
 
-        <div className="user-stats-grid">
-          <div className="stat-card xp">
-            <div className="stat-icon">⭐</div>
-            <p className="stat-value">{userStats.xp}</p>
-            <p className="stat-label">Total XP</p>
+        <div className="user-stats-grid-2x2">
+          <div className="stat-card-small xp">
+            <div className="stat-icon-small">⭐</div>
+            <p className="stat-value-small">{userStats.xp}</p>
+            <p className="stat-label-small">Total XP</p>
           </div>
 
-          <div className="stat-card recipes">
-            <div className="stat-icon">🍴</div>
-            <p className="stat-value">{userStats.recipesMade}</p>
-            <p className="stat-label">Recipes Made</p>
+          <div className="stat-card-small recipes">
+            <div className="stat-icon-small">🍴</div>
+            <p className="stat-value-small">{completedRecipes}</p>
+            <p className="stat-label-small">Recipes Completed</p>
           </div>
 
-          <div className="stat-card streak">
-            <div className="stat-icon">🔥</div>
-            <p className="stat-value">{userStats.loginStreak}</p>
-            <p className="stat-label">Login Streak</p>
+          <div className="stat-card-small streak">
+            <div className="stat-icon-small">🔥</div>
+            <p className="stat-value-small">{userStats.loginStreak}</p>
+            <p className="stat-label-small">Login Streak</p>
+          </div>
+
+          <div className="stat-card-small submitted">
+            <div className="stat-icon-small">📸</div>
+            <p className="stat-value-small">{userStats.recipesShared}</p>
+            <p className="stat-label-small">Recipes Submitted</p>
           </div>
         </div>
       </div>
 
       {lastViewedRecipes.length > 0 && (
         <div className="last-viewed-section">
-          <h2 className="section-title">📚 Last Viewed Recipes</h2>
+          <h2 className="section-title">Last Viewed Recipes</h2>
           <div className="last-viewed-grid">
             {lastViewedRecipes.map(recipe => (
               <div key={recipe.id} className="last-viewed-card">

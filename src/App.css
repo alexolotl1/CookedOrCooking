@@ -129,7 +129,7 @@ body {
 
 .page h3 {
   font-size: 1.5rem;
-  margin: 1.5rem 0 1rem;
+  margin: 0 0 1rem;
   color: #0d5e2a;
 }
 
@@ -180,7 +180,7 @@ body {
 }
 
 .recipe-card {
-  background: white;
+  background: #8FB3DD;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -208,13 +208,13 @@ body {
   padding: 1rem;
   margin: 0;
   font-size: 1.2rem;
-  color: #1e8449;
+  color: #3c60d4;
 }
 
 .recipe-desc {
   padding: 0 1rem;
   padding-bottom: 1rem;
-  color: #5a6c7d;
+  color: #ffffff;
   font-size: 0.95rem;
 }
 
@@ -530,7 +530,8 @@ body {
 
 .step-content {
   background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   border-radius: 8px;
   margin-bottom: 2rem;
   min-height: 200px;
@@ -544,12 +545,6 @@ body {
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-}
-
-.step-title {
-  color: #1e8449;
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
 }
 
 .step-details {

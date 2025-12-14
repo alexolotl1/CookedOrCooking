@@ -1,4 +1,10 @@
+import { useState } from 'react';
+
 export default function RecipeDetail({ recipe, onClose, onStartCooking }) {
+  const [userRating, setUserRating] = useState(0);
+  const [showRatingPrompt, setShowRatingPrompt] = useState(false);
+  const [recipeRating] = useState(Math.floor(Math.random() * 2) + 3); // Random 3-5
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -6,12 +12,22 @@ export default function RecipeDetail({ recipe, onClose, onStartCooking }) {
         <div className="recipe-detail-header">
           <div className="recipe-detail-image">
             <div style={{ width: '100%', height: '300px', background: 'linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem' }}>
-              🍳
+              {recipe.image}
             </div>
           </div>
           <div className="recipe-detail-info">
             <h2>{recipe.name}</h2>
             <p className="recipe-detail-description">{recipe.description}</p>
+            
+            <div className="recipe-rating">
+              <div className="rating-stars">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className={i < recipeRating ? 'star filled' : 'star'}>🥕</span>
+                ))}
+              </div>
+              <span className="rating-value">{recipeRating}/5</span>
+            </div>
+
             <div className="recipe-meta">
               <span>⏱️ {recipe.time} mins</span>
               <span>👥 {recipe.servings} servings</span>

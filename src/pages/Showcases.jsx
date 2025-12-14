@@ -13,34 +13,33 @@ export default function Showcases() {
   const [showRecipeDetail, setShowRecipeDetail] = useState(false);
   const [showRecipeSteps, setShowRecipeSteps] = useState(false);
 
-  const pastWinners = recipes.filter(recipe => recipe.isWinner);
+  const featuredRecipes = recipes.filter(recipe => recipe.featured);
 
-  const pastWinnersByCategory = {
-    asian: pastWinners.filter(r => r.category === 'asian'),
-    desserts: pastWinners.filter(r => r.category === 'desserts'),
-    holiday: pastWinners.filter(r => r.category === 'holiday')
+  // Group featured recipes by category
+  const featuredByCategory = {
+    holiday: featuredRecipes.filter(r => r.category === 'holiday'),
+    asian: featuredRecipes.filter(r => r.category === 'asian'),
+    fish: featuredRecipes.filter(r => r.category === 'fish')
   };
 
-  const votingDishes = recipes.slice(12, 16);
-
   const pastWinnersCategories = [
-    {
-      id: 'asian',
-      name: recipeCategories.asian,
-      buttonClass: 'category-asian-btn',
-      dishes: pastWinnersByCategory.asian
-    },
-    {
-      id: 'desserts',
-      name: recipeCategories.desserts,
-      buttonClass: 'category-desserts-btn',
-      dishes: pastWinnersByCategory.desserts
-    },
     {
       id: 'holiday',
       name: recipeCategories.holiday,
       buttonClass: 'category-quick-btn',
-      dishes: pastWinnersByCategory.holiday
+      dishes: featuredByCategory.holiday
+    },
+    {
+      id: 'asian',
+      name: recipeCategories.asian,
+      buttonClass: 'category-asian-btn',
+      dishes: featuredByCategory.asian
+    },
+    {
+      id: 'fish',
+      name: recipeCategories.fish,
+      buttonClass: 'category-desserts-btn',
+      dishes: featuredByCategory.fish
     }
   ];
 
@@ -135,7 +134,7 @@ export default function Showcases() {
 
           {userVote && (
             <div className="voting-status already-voted">
-              ✓ Thank you for voting! You voted for <strong>{votingDishes.find(d => d.id === userVote)?.name}</strong>
+              ✓ Thank you for voting! You voted for <strong>{featuredByCategory.holiday.find(d => d.id === userVote)?.name}</strong>
             </div>
           )}
 
@@ -146,7 +145,7 @@ export default function Showcases() {
           )}
 
           <div className="voting-dishes-grid">
-            {votingDishes.map(dish => (
+            {featuredByCategory.holiday.map(dish => (
               <div
                 key={dish.id}
                 className={`voting-dish-card ${userVote === dish.id ? 'voted-for' : ''}`}
