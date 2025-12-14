@@ -1,37 +1,206 @@
-// Showcases page - food photography and inspiration
+import { useState } from 'react';
+import '../AdditionalApp.css';
+import { recipes, recipeCategories } from '../data/recipes';
+import RecipeDetail from '../components/RecipeDetail';
+import RecipeSteps from '../components/RecipeSteps';
+
 export default function Showcases() {
-  const showcases = [
+  const [expandedCategory, setExpandedCategory] = useState(null);
+  const [userVote, setUserVote] = useState(null);
+  const [voteCounts, setVoteCounts] = useState({});
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [showRecipeDetail, setShowRecipeDetail] = useState(false);
+  const [showRecipeSteps, setShowRecipeSteps] = useState(false);
+
+  const pastWinners = recipes.filter(recipe => recipe.isWinner);
+
+  const pastWinnersByCategory = {
+    asian: pastWinners.filter(r => r.category === 'asian'),
+    desserts: pastWinners.filter(r => r.category === 'desserts'),
+    holiday: pastWinners.filter(r => r.category === 'holiday')
+  };
+
+  const votingDishes = recipes.slice(12, 16);
+
+  const pastWinnersCategories = [
     {
-      id: 1,
-      title: 'Elegant Plating',
-      description: 'Learn how to plate your dishes like a pro',
+      id: 'asian',
+      name: recipeCategories.asian,
+      buttonClass: 'category-asian-btn',
+      dishes: pastWinnersByCategory.asian
     },
     {
-      id: 2,
-      title: 'Seasonal Cooking',
-      description: 'Make the most of seasonal ingredients',
+      id: 'desserts',
+      name: recipeCategories.desserts,
+      buttonClass: 'category-desserts-btn',
+      dishes: pastWinnersByCategory.desserts
     },
     {
-      id: 3,
-      title: 'Quick Meals',
-      description: '30-minute meals for busy days',
-    },
+      id: 'holiday',
+      name: recipeCategories.holiday,
+      buttonClass: 'category-quick-btn',
+      dishes: pastWinnersByCategory.holiday
+    }
   ];
 
+  const toggleCategory = (categoryId) => {
+    setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
+  const handleRecipeClick = (recipe) => {
+    setSelectedRecipe(recipe);
+    setShowRecipeDetail(true);
+  };
+
+  const handleStartCooking = () => {
+    setShowRecipeDetail(false);
+    setShowRecipeSteps(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowRecipeDetail(false);
+    setShowRecipeSteps(false);
+    setSelectedRecipe(null);
+  };
+
+  const handleVote = (dishId) => {
+    if (!userVote) {
+      setUserVote(dishId);
+      setVoteCounts(prev => ({
+        ...prev,
+        [dishId]: (prev[dishId] || 0) + 1
+      }));
+    }
+  };
+
   return (
-    <div className="page">
-      <h2>Showcases</h2>
-      <p>Get inspired by beautiful food and creative cooking ideas</p>
-      
-      <div className="showcase-grid">
-        {showcases.map((item) => (
-          <div key={item.id} className="showcase-card">
-            <div className="showcase-image">📸</div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        ))}
+    <div className="page showcases-container">
+      <div className="showcases-section">
+        <h2 className="showcases-section-title">🏆 Past Winners</h2>
+        <p className="showcases-section-subtitle">Featured dishes from previous competitions. Click to view full recipe!</p>
+
+        <div className="past-winners-container">
+          {pastWinnersCategories.map(category => (
+            <div key={category.id} className={`winner-category-${category.id}`}>
+              <button
+                className={`winner-category-btn ${category.buttonClass} ${
+                  expandedCategory === category.id ? 'active' : ''
+                }`}
+                onClick={() => toggleCategory(category.id)}
+              >
+                <span>{category.name}</span>
+                <span className={`winner-category-toggle ${
+                  expandedCategory === category.id ? 'open' : ''
+                }`}>▼</span>
+              </button>
+
+              <div
+                className={`winner-dishes-container ${
+                  expandedCategory === category.id ? 'open' : ''
+                }`}
+              >
+                <div className="winner-dishes-grid">
+                  {category.dishes.map(dish => (
+                    <div
+                      key={dish.id}
+                      className="winner-dish-card"
+                      onClick={() => handleRecipeClick(dish)}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className={`winner-dish-image winner-dish-image-${category.id}`}>
+                        {dish.image}
+                      </div>
+                      <div className="winner-dish-info">
+                        <h4 className="winner-dish-name">{dish.name}</h4>
+                        <p className="winner-dish-desc">{dish.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <div className="showcases-section">
+        <div className="voting-section">
+          <div className="voting-header">
+            <h2>🗳️ Vote for Best Holiday Dishes 2025</h2>
+            <p>Help us choose the best holiday dish for our featured recipes! Click to view full recipe.</p>
+          </div>
+
+          {userVote && (
+            <div className="voting-status already-voted">
+              ✓ Thank you for voting! You voted for <strong>{votingDishes.find(d => d.id === userVote)?.name}</strong>
+            </div>
+          )}
+
+          {!userVote && (
+            <div className="voting-status">
+              👇 Click on your favorite dish below to cast your vote (you can only vote once)
+            </div>
+          )}
+
+          <div className="voting-dishes-grid">
+            {votingDishes.map(dish => (
+              <div
+                key={dish.id}
+                className={`voting-dish-card ${userVote === dish.id ? 'voted-for' : ''}`}
+              >
+                <div
+                  className="voting-dish-image"
+                  onClick={() => handleRecipeClick(dish)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {dish.image}
+                </div>
+                <div className="voting-dish-content">
+                  <h4
+                    className="voting-dish-name"
+                    onClick={() => handleRecipeClick(dish)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    {dish.name}
+                  </h4>
+                  <p className="voting-dish-description">{dish.description}</p>
+                  <div className="voting-dish-info">
+                    <div className="voting-dish-time">⏱️ {dish.time} mins</div>
+                    <div className="voting-dish-difficulty">📊 {dish.difficulty}</div>
+                  </div>
+                  <button
+                    className={`voting-vote-btn ${userVote === dish.id ? 'voted' : ''}`}
+                    onClick={() => handleVote(dish.id)}
+                    disabled={userVote !== null && userVote !== dish.id}
+                  >
+                    {userVote === dish.id ? '✓ Your Vote' : '👍 Vote'}
+                  </button>
+                  {voteCounts[dish.id] > 0 && (
+                    <div className="voting-vote-count">
+                      {voteCounts[dish.id]} vote{voteCounts[dish.id] > 1 ? 's' : ''}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {showRecipeDetail && selectedRecipe && (
+        <RecipeDetail 
+          recipe={selectedRecipe} 
+          onClose={handleCloseModal} 
+          onStartCooking={handleStartCooking} 
+        />
+      )}
+
+      {showRecipeSteps && selectedRecipe && (
+        <RecipeSteps 
+          recipe={selectedRecipe} 
+          onClose={handleCloseModal} 
+        />
+      )}
     </div>
   );
 }

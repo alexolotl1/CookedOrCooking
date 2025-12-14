@@ -2,7 +2,6 @@ export default function RecipeDetail({ recipe, onClose, onStartCooking }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>✕</button>
 
         <div className="recipe-detail-header">
           <div className="recipe-detail-image">

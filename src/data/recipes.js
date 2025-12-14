@@ -1,3 +1,5 @@
+//AI SAMPLE DATA
+
 export const recipes = [
   {
     id: 1,
@@ -111,4 +113,212 @@ export const recipes = [
       { number: 6, title: 'Season and serve', details: 'Add salt, pepper, and herbs to taste. Serve hot with bread.' }
     ]
   },
+  {
+    id: 7,
+    name: 'Pad Thai',
+    description: 'Spicy stir-fried rice noodles with shrimp and peanuts',
+    time: 25,
+    image: '🥢',
+    details: 'Authentic Thai street food with a perfect balance of sweet, salty, sour, and spicy flavors.',
+    ingredients: 'Rice noodles, shrimp, eggs, peanuts, lime, fish sauce, tamarind, garlic, chili',
+    servings: 2,
+    difficulty: 'Easy',
+    category: 'asian',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Soak noodles', details: 'Soak rice noodles in warm water for 15 minutes until softened.' },
+      { number: 2, title: 'Prepare sauce', details: 'Mix tamarind paste, fish sauce, and palm sugar in a bowl.' },
+      { number: 3, title: 'Cook in wok', details: 'Heat oil in wok, add garlic and cook for 1 minute.' },
+      { number: 4, title: 'Add protein', details: 'Add shrimp and cook until pink, about 3 minutes.' },
+      { number: 5, title: 'Add noodles and sauce', details: 'Add drained noodles and sauce, toss well for 2-3 minutes.' },
+      { number: 6, title: 'Finish and serve', details: 'Top with crushed peanuts, lime wedge, and chili. Serve immediately.' }
+    ]
+  },
+  {
+    id: 8,
+    name: 'Chicken Teriyaki',
+    description: 'Glazed chicken with a rich savory-sweet sauce',
+    time: 30,
+    image: '🍗',
+    details: 'Japanese-inspired glazed chicken that\'s tender on the inside and caramelized on the outside.',
+    ingredients: 'Chicken thighs, soy sauce, sake, mirin, sugar, ginger, garlic, green onions',
+    servings: 4,
+    difficulty: 'Medium',
+    category: 'asian',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Prepare chicken', details: 'Cut chicken thighs into bite-sized pieces.' },
+      { number: 2, title: 'Make teriyaki sauce', details: 'Mix soy sauce, sake, mirin, and sugar. Set aside.' },
+      { number: 3, title: 'Heat pan', details: 'Heat oil in a pan over medium-high heat.' },
+      { number: 4, title: 'Cook chicken', details: 'Cook chicken until golden, about 5-7 minutes.' },
+      { number: 5, title: 'Add sauce', details: 'Pour teriyaki sauce over chicken and simmer for 5 minutes until glossy.' },
+      { number: 6, title: 'Garnish and serve', details: 'Top with green onions and sesame seeds. Serve with rice.' }
+    ]
+  },
+  {
+    id: 9,
+    name: 'Chocolate Lava Cake',
+    description: 'Rich, molten chocolate center with warm gooey goodness',
+    time: 35,
+    image: '🍫',
+    details: 'Elegant French dessert with a flowing chocolate center. Perfect for chocolate lovers.',
+    ingredients: 'Dark chocolate, butter, eggs, sugar, flour, vanilla, salt',
+    servings: 4,
+    difficulty: 'Hard',
+    category: 'desserts',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Preheat oven', details: 'Preheat oven to 425°F (220°C). Grease ramekins well.' },
+      { number: 2, title: 'Melt chocolate', details: 'Melt dark chocolate and butter together in a double boiler.' },
+      { number: 3, title: 'Beat eggs', details: 'Whisk eggs and sugar until pale and fluffy, about 3 minutes.' },
+      { number: 4, title: 'Combine mixtures', details: 'Fold chocolate mixture into eggs. Add flour and vanilla gently.' },
+      { number: 5, title: 'Fill ramekins', details: 'Pour batter into ramekins, filling about three-quarters full.' },
+      { number: 6, title: 'Bake and serve', details: 'Bake for 12-14 minutes until edges are set but center is soft. Serve immediately.' }
+    ]
+  },
+  {
+    id: 10,
+    name: 'Strawberry Cheesecake',
+    description: 'Creamy cheesecake with fresh strawberry topping',
+    time: 120,
+    image: '🍰',
+    details: 'Classic New York style cheesecake with a delicious strawberry compote.',
+    ingredients: 'Cream cheese, sugar, eggs, graham cracker crust, strawberries, lemon juice',
+    servings: 8,
+    difficulty: 'Medium',
+    category: 'desserts',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Prepare crust', details: 'Mix crushed graham crackers with melted butter. Press into pan.' },
+      { number: 2, title: 'Make filling', details: 'Beat cream cheese and sugar until smooth. Add eggs one at a time.' },
+      { number: 3, title: 'Pour filling', details: 'Pour filling over crust. Smooth the top.' },
+      { number: 4, title: 'Bake', details: 'Bake at 325°F for 55-60 minutes until center is just set.' },
+      { number: 5, title: 'Cool slowly', details: 'Turn off oven and let cool in oven for 1 hour. Then cool completely.' },
+      { number: 6, title: 'Add strawberries', details: 'Top with fresh strawberries or strawberry compote before serving.' }
+    ]
+  },
+  {
+    id: 11,
+    name: 'Roasted Turkey',
+    description: 'Classic holiday centerpiece with crispy skin and juicy meat',
+    time: 240,
+    image: '🦃',
+    details: 'Traditional herb-roasted turkey perfect for holiday gatherings and celebrations.',
+    ingredients: 'Whole turkey, butter, herbs, onions, celery, broth, salt, pepper',
+    servings: 12,
+    difficulty: 'Hard',
+    category: 'holiday',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Prepare turkey', details: 'Remove giblets and pat turkey dry. Let sit at room temperature 1 hour.' },
+      { number: 2, title: 'Season inside and out', details: 'Rub butter and herbs all over turkey and inside cavity.' },
+      { number: 3, title: 'Set up roasting', details: 'Place turkey on roasting pan with vegetables and broth.' },
+      { number: 4, title: 'Roast', details: 'Roast at 325°F for about 13 minutes per pound until golden.' },
+      { number: 5, title: 'Rest the turkey', details: 'Let rest for 20-30 minutes before carving. This keeps it juicy.' },
+      { number: 6, title: 'Carve and serve', details: 'Carve and serve with pan drippings and gravy.' }
+    ]
+  },
+  {
+    id: 12,
+    name: 'Cranberry Sauce',
+    description: 'Tangy and festive sauce perfect for holiday meals',
+    time: 20,
+    image: '🍓',
+    details: 'Homemade cranberry sauce with a perfect balance of tartness and sweetness.',
+    ingredients: 'Fresh cranberries, sugar, orange juice, cinnamon, cloves',
+    servings: 8,
+    difficulty: 'Easy',
+    category: 'holiday',
+    isWinner: true,
+    steps: [
+      { number: 1, title: 'Rinse cranberries', details: 'Rinse fresh cranberries and discard any damaged ones.' },
+      { number: 2, title: 'Combine ingredients', details: 'Add cranberries, sugar, and orange juice to a saucepan.' },
+      { number: 3, title: 'Bring to boil', details: 'Heat over medium-high heat, stirring occasionally, until it boils.' },
+      { number: 4, title: 'Simmer', details: 'Reduce heat and simmer for 15 minutes until berries break down.' },
+      { number: 5, title: 'Add spices', details: 'Stir in cinnamon and cloves for extra flavor.' },
+      { number: 6, title: 'Cool and serve', details: 'Let cool completely. Sauce will thicken as it cools.' }
+    ]
+  },
+  {
+    id: 13,
+    name: 'Homemade Pasta Carbonara',
+    description: 'Creamy Italian pasta with bacon and parmesan',
+    time: 30,
+    image: '🍝',
+    details: 'Elevated version of the classic with premium ingredients and techniques.',
+    ingredients: 'Fresh pasta, guanciale, eggs, pecorino romano, black pepper',
+    servings: 4,
+    difficulty: 'Medium',
+    steps: [
+      { number: 1, title: 'Cook pasta', details: 'Bring salted water to boil and cook fresh pasta until al dente.' },
+      { number: 2, title: 'Prepare sauce', details: 'Whisk eggs with grated cheese and cracked black pepper.' },
+      { number: 3, title: 'Cook guanciale', details: 'Dice and cook guanciale until crispy, about 5 minutes.' },
+      { number: 4, title: 'Combine hot', details: 'Toss hot pasta with guanciale and fat. Remove from heat.' },
+      { number: 5, title: 'Add eggs', details: 'Quickly stir in egg mixture while pasta is hot, creating a creamy sauce.' },
+      { number: 6, title: 'Serve', details: 'Plate immediately with extra cheese and black pepper.' }
+    ]
+  },
+  {
+    id: 14,
+    name: 'Spicy Thai Green Curry',
+    description: 'Aromatic coconut curry with vegetables and protein',
+    time: 35,
+    image: '🥘',
+    details: 'Fragrant and creamy Thai curry with just the right amount of heat.',
+    ingredients: 'Coconut milk, green curry paste, chicken, vegetables, fish sauce, lime',
+    servings: 4,
+    difficulty: 'Medium',
+    steps: [
+      { number: 1, title: 'Heat coconut milk', details: 'Heat 1 can of coconut milk in a large pot over medium heat.' },
+      { number: 2, title: 'Add curry paste', details: 'Stir in green curry paste and cook for 2 minutes to bloom flavors.' },
+      { number: 3, title: 'Add protein', details: 'Add sliced chicken and cook for 5-7 minutes until cooked through.' },
+      { number: 4, title: 'Add vegetables', details: 'Add bamboo shoots, bell peppers, and basil. Simmer for 5 minutes.' },
+      { number: 5, title: 'Season', details: 'Add fish sauce to taste and squeeze of fresh lime juice.' },
+      { number: 6, title: 'Serve hot', details: 'Ladle into bowls and serve over jasmine rice.' }
+    ]
+  },
+  {
+    id: 15,
+    name: 'Crispy Fried Chicken',
+    description: 'Golden, juicy fried chicken with herb seasoning',
+    time: 45,
+    image: '🍗',
+    details: 'Southern-style fried chicken with a crispy coating and tender, juicy meat.',
+    ingredients: 'Chicken pieces, buttermilk, flour, paprika, garlic powder, salt, pepper, oil',
+    servings: 4,
+    difficulty: 'Easy',
+    steps: [
+      { number: 1, title: 'Marinate chicken', details: 'Soak chicken in buttermilk for at least 1 hour or overnight.' },
+      { number: 2, title: 'Mix dry ingredients', details: 'Combine flour with paprika, garlic powder, salt, and pepper.' },
+      { number: 3, title: 'Heat oil', details: 'Heat oil in a deep pan or fryer to 350°F (175°C).' },
+      { number: 4, title: 'Coat chicken', details: 'Remove chicken from buttermilk and coat thoroughly in flour mixture.' },
+      { number: 5, title: 'Fry', details: 'Fry chicken for 12-15 minutes until golden brown and cooked through.' },
+      { number: 6, title: 'Drain and serve', details: 'Place on paper towels to drain. Serve hot with sides.' }
+    ]
+  },
+  {
+    id: 16,
+    name: 'Sushi Rolls Assortment',
+    description: 'Fresh assortment of California and spicy tuna rolls',
+    time: 40,
+    image: '🍣',
+    details: 'Beautifully rolled sushi with fresh fish, vegetables, and perfect seasoned rice.',
+    ingredients: 'Sushi rice, nori, fish, cucumber, avocado, crab, soy sauce, wasabi',
+    servings: 4,
+    difficulty: 'Hard',
+    steps: [
+      { number: 1, title: 'Cook sushi rice', details: 'Cook and season rice with vinegar, sugar, and salt. Cool completely.' },
+      { number: 2, title: 'Prepare ingredients', details: 'Slice fish, cucumber, and avocado into thin strips.' },
+      { number: 3, title: 'Lay nori', details: 'Place nori on bamboo mat with shiny side down.' },
+      { number: 4, title: 'Add rice', details: 'Spread thin layer of rice on nori, leaving a border at the top.' },
+      { number: 5, title: 'Add fillings', details: 'Layer fish, vegetables, and other ingredients in the center.' },
+      { number: 6, title: 'Roll and slice', details: 'Roll tightly using the mat. Slice with a sharp, wet knife. Serve with soy sauce and wasabi.' }
+    ]
+  },
 ];
+
+export const recipeCategories = {
+  asian: 'Tasty Asian Cuisine',
+  desserts: 'Sweets and Desserts',
+  holiday: 'Best Christmas Dishes'
+};
