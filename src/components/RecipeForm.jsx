@@ -1,9 +1,32 @@
 import '../AdditionalApp.css';
+import { useState } from 'react';
 
 export default function RecipeForm({ formData, onFormChange, onNext, onClose }) {
+  const [imagePreview, setImagePreview] = useState(null);
+  const [imageInputMethod, setImageInputMethod] = useState('url');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     onFormChange({ ...formData, [name]: value });
+  };
+
+  const handleImageUrlChange = (e) => {
+    const url = e.target.value;
+    onFormChange({ ...formData, imageUrl: url });
+    setImagePreview(url);
+  };
+
+  const handleImageFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const base64String = event.target?.result;
+        onFormChange({ ...formData, imageUrl: base64String });
+        setImagePreview(base64String);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const isComplete = formData.name && formData.description && formData.time;
@@ -108,6 +131,66 @@ export default function RecipeForm({ formData, onFormChange, onNext, onClose }) 
               placeholder="ex: 4 eggs, 100g pancetta, 100g parmesan cheese, 400g spaghetti"
               style={{ minHeight: '80px' }}
             />
+          </div>
+
+          <div className="form-group form-row full">
+            <label className="form-label">📸 Recipe Image</label>
+            <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                <input
+                  type="radio"
+                  name="imageMethod"
+                  value="url"
+                  checked={imageInputMethod === 'url'}
+                  onChange={(e) => setImageInputMethod(e.target.value)}
+                />
+                URL Link
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                <input
+                  type="radio"
+                  name="imageMethod"
+                  value="file"
+                  checked={imageInputMethod === 'file'}
+                  onChange={(e) => setImageInputMethod(e.target.value)}
+                />
+                Upload File
+              </label>
+            </div>
+
+            {imageInputMethod === 'url' ? (
+              <input
+                type="url"
+                className="form-input"
+                name="imageUrl"
+                value={formData.imageUrl || ''}
+                onChange={handleImageUrlChange}
+                placeholder="ex: https://images.unsplash.com/photo-..."
+              />
+            ) : (
+              <input
+                type="file"
+                className="form-input"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={handleImageFileChange}
+              />
+            )}
+
+            {imagePreview && (
+              <div style={{ marginTop: '1rem' }}>
+                <p style={{ fontSize: '0.85rem', color: '#999', marginBottom: '0.5rem' }}>Preview:</p>
+                <img 
+                  src={imagePreview} 
+                  alt="Preview" 
+                  style={{ 
+                    maxWidth: '200px', 
+                    maxHeight: '150px', 
+                    objectFit: 'cover',
+                    borderRadius: '4px'
+                  }} 
+                />
+              </div>
+            )}
           </div>
 
           <div className="form-buttons">

@@ -16,6 +16,22 @@ export default function RecipePreview({ formData, creationSteps, onBack, onPubli
           </div>
 
           <div className="preview-content">
+            {formData.imageUrl && (
+              <div className="preview-section" style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                <p className="preview-label">📸 Recipe Image</p>
+                <img 
+                  src={formData.imageUrl} 
+                  alt={formData.name}
+                  style={{ 
+                    maxWidth: '300px', 
+                    maxHeight: '250px', 
+                    objectFit: 'cover',
+                    borderRadius: '8px',
+                    marginTop: '0.5rem'
+                  }} 
+                />
+              </div>
+            )}
             <div className="preview-section">
               <h3>📋 Recipe Information</h3>
               

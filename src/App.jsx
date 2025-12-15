@@ -103,34 +103,56 @@ export default function App() {
     setCreationStep(creationStep - 1);
   };
 
-  const handlePublishRecipe = () => {
+  const handlePublishRecipe = async () => {
     const ingredients = formData.ingredientsText
       .split(',')
       .map(ing => ing.trim())
-      .filter(ing => ing);
+      .filter(ing => ing)
+      .join(', ');
 
     const newRecipe = {
-      id: Math.max(...recipes.map(r => r.id), 0) + 1,
       name: formData.name,
       description: formData.description,
       time: parseInt(formData.time),
-      image: '🍽️',
+      imageUrl: formData.imageUrl || null,
       details: formData.details || formData.description,
       ingredients: ingredients,
       servings: parseInt(formData.servings) || 1,
       difficulty: formData.difficulty || 'Easy',
+      isVegetarian: false,
+      isVegan: false,
       steps: creationSteps.filter(step => step.title && step.details)
     };
 
-    recipes.push(newRecipe);
-    
-    // Award XP for sharing recipe
-    recordRecipeShared();
+    try {
+      // POST to MongoDB API
+      const response = await fetch('/api/recipes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newRecipe)
+      });
 
-    setPublishSuccess(true);
-    setTimeout(() => {
-      handleCloseRecipeCreation();
-    }, 2000);
+      if (response.ok) {
+        const result = await response.json();
+        // Add to local recipes array for immediate display
+        recipes.push({ id: recipes.length + 1, ...newRecipe });
+        
+        // Award XP for sharing recipe
+        recordRecipeShared();
+
+        setPublishSuccess(true);
+        setTimeout(() => {
+          handleCloseRecipeCreation();
+        }, 2000);
+      } else {
+        const errorData = await response.json();
+        console.error('API Error:', errorData);
+        alert(`Error publishing recipe: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error publishing recipe:', error);
+      alert(`Error publishing recipe: ${error.message}`);
+    }
   };
 
   const renderPage = () => {

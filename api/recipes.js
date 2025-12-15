@@ -1,4 +1,4 @@
-import { getRecipesCollection } from '../lib/mongodb.js';
+import { getRecipesCollection } from '../src/lib/mongodb.js';
 
 export default async function handler(req, res) {
   const { method } = req;
@@ -23,6 +23,8 @@ export default async function handler(req, res) {
     if (method === 'POST') {
       const { name, description, time, imageUrl, details, ingredients, servings, difficulty, isVegetarian, isVegan, steps } = req.body;
 
+      console.log('📝 Received recipe submission:', { name, hasImage: !!imageUrl });
+
       if (!name || !description) {
         return res.status(400).json({ error: 'Name and description required' });
       }
@@ -32,7 +34,6 @@ export default async function handler(req, res) {
         description,
         time: time || 30,
         imageUrl: imageUrl || null,
-        image: '🍳',
         details: details || '',
         ingredients: ingredients || '',
         servings: servings || 2,
@@ -46,6 +47,8 @@ export default async function handler(req, res) {
 
       const result = await recipesCollection.insertOne(newRecipe);
       
+      console.log('✅ Recipe saved with ID:', result.insertedId);
+
       return res.status(201).json({ 
         message: 'Recipe created',
         id: result.insertedId,
@@ -57,7 +60,6 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('API error:', error);
-    return res.status(500).json({ error: 'Server error' });
+    return res.status(500).json({ error: 'Server error', details: error.message });
   }
 }
-
