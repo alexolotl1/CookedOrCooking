@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navigation from '../src/components/Navigation';
 
 import Home from '../src/pages/Home';
@@ -12,10 +12,10 @@ import RecipeForm from '../src/components/RecipeForm';
 import RecipeStepsForm from '../src/components/RecipeStepsForm';
 import RecipePreview from '../src/components/RecipePreview';
 
-import { recipes } from '../src/data/recipes';
 import { addRecipeToViewed, recordRecipeShared } from '../src/data/userStats';
 
 export default function App() {
+  const [recipes, setRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [showRecipeDetail, setShowRecipeDetail] = useState(false);
@@ -38,6 +38,23 @@ export default function App() {
     ingredientsText: ''
   });
   const [publishSuccess, setPublishSuccess] = useState(false);
+
+  // Fetch recipes from API on mount
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
+
+  const fetchRecipes = async () => {
+    try {
+      const response = await fetch('/api/recipes');
+      if (response.ok) {
+        const data = await response.json();
+        setRecipes(data);
+      }
+    } catch (error) {
+      console.error('Error fetching recipes:', error);
+    }
+  };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -133,8 +150,9 @@ export default function App() {
 
       if (response.ok) {
         const result = await response.json();
-        // Add to local recipes array for immediate display
-        recipes.push({ id: recipes.length + 1, ...newRecipe });
+        
+        // Refresh recipes from database
+        await fetchRecipes();
         
         // Award XP for sharing recipe
         recordRecipeShared();
