@@ -109,9 +109,7 @@ export default function Showcases() {
                       onClick={() => handleRecipeClick(dish)}
                       style={{ cursor: 'pointer' }}
                     >
-                      <div className={`winner-dish-image winner-dish-image-${category.id}`}>
-                        {dish.image}
-                      </div>
+                      <img src={dish.imageUrl} alt={dish.name} className={`winner-dish-image winner-dish-image-${category.id}`} />
                       <div className="winner-dish-info">
                         <h4 className="winner-dish-name">{dish.name}</h4>
                         <p className="winner-dish-desc">{dish.description}</p>
@@ -140,7 +138,7 @@ export default function Showcases() {
 
           {!userVote && (
             <div className="voting-status">
-              👇 Click on your favorite dish below to cast your vote (you can only vote once)
+              Click on your favorite dish below to cast your vote (you can only vote once)
             </div>
           )}
 
@@ -150,13 +148,13 @@ export default function Showcases() {
                 key={dish.id}
                 className={`voting-dish-card ${userVote === dish.id ? 'voted-for' : ''}`}
               >
-                <div
+                <img
+                  src={dish.imageUrl}
+                  alt={dish.name}
                   className="voting-dish-image"
                   onClick={() => handleRecipeClick(dish)}
                   style={{ cursor: 'pointer' }}
-                >
-                  {dish.image}
-                </div>
+                />
                 <div className="voting-dish-content">
                   <h4
                     className="voting-dish-name"

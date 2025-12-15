@@ -11,9 +11,7 @@ export default function RecipeDetail({ recipe, onClose, onStartCooking }) {
 
         <div className="recipe-detail-header">
           <div className="recipe-detail-image">
-            <div style={{ width: '100%', height: '300px', background: 'linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem' }}>
-              {recipe.image}
-            </div>
+            <img src={recipe.imageUrl} alt={recipe.name} style={{ width: '100%', height: '300px', objectFit: 'cover', objectPosition: 'center' }} />
           </div>
           <div className="recipe-detail-info">
             <h2>{recipe.name}</h2>

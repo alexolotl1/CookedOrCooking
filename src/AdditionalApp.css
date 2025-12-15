@@ -571,22 +571,20 @@
 .winner-dish-image {
   width: 100%;
   height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
+  object-fit: cover;
+  object-position: center;
 }
 
 .winner-dish-image-asian {
-  background: linear-gradient(135deg, #1e8449 0%, #0d5628 100%);
+  /* Background removed - using actual images */
 }
 
 .winner-dish-image-desserts {
-  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  /* Background removed - using actual images */
 }
 
 .winner-dish-image-quick {
-  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  /* Background removed - using actual images */
 }
 
 .winner-dish-info {
@@ -683,12 +681,8 @@
 .voting-dish-image {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #0066cc 0%, #2ecc71 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 4rem;
-  color: white;
+  object-fit: cover;
+  object-position: center;
   overflow: hidden;
 }
 

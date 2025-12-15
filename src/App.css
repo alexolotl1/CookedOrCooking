@@ -186,7 +186,6 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  border-top: 4px solid #2ecc71;
 }
 
 .recipe-card:hover {
@@ -197,11 +196,8 @@ body {
 .recipe-card img {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
+  object-fit: cover;
+  object-position: center;
 }
 
 .recipe-card h3 {
