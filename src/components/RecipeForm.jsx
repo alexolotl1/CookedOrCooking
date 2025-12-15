@@ -1,4 +1,3 @@
-import '../AdditionalApp.css';
 import { useState } from 'react';
 
 export default function RecipeForm({ formData, onFormChange, onNext, onClose }) {

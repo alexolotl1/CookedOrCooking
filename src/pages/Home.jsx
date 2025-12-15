@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import '../AdditionalApp.css';
 import { initializeUser, getUserStats, achievements } from '../data/userStats';
 import { recipes } from '../data/recipes';
 

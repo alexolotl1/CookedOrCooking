@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { articles } from '../data/articles';
 import ArticleDetail from '../components/ArticleDetail';
-import '../AdditionalApp.css';
 
 export default function Learn() {
   const [selectedArticle, setSelectedArticle] = useState(null);

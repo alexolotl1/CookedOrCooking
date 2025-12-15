@@ -1,4 +1,4 @@
-import { getRecipesCollection } from '../src/lib/mongodb.js';
+import { getRecipesCollection } from '../../src/lib/mongodb.js';
 
 export default async function handler(req, res) {
   const { method } = req;

@@ -28,13 +28,12 @@ export default async function handler(req, res) {
       database: 'cooked-or-cooking',
       collections: collections.map(c => c.name),
       recipeCount: recipeCount,
-      timestamp: new Date().toISOString()
     });
   } catch (error) {
+    console.error('Connection error:', error);
     return res.status(500).json({
-      status: '❌ MongoDB Connection Failed',
-      error: error.message,
-      mongoUri: mongoUri.substring(0, 30) + '...'
+      status: '❌ Connection failed',
+      error: error.message
     });
   } finally {
     await client.close();

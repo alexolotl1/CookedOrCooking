@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../AdditionalApp.css';
 import { recipes, recipeCategories } from '../data/recipes';
 import RecipeDetail from '../components/RecipeDetail';
 import RecipeSteps from '../components/RecipeSteps';

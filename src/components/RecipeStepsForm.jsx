@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../AdditionalApp.css';
 
 export default function RecipeStepsForm({ formData, creationSteps, onStepsChange, onBack, onNext, onClose }) {
   const [currentStep, setCurrentStep] = useState(0);

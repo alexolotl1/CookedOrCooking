@@ -1,5 +1,3 @@
-import '../AdditionalApp.css';
-
 export default function RecipePreview({ formData, creationSteps, onBack, onPublish, onClose }) {
   const handlePublish = () => {
     onPublish();

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import RecipeCard from '../components/RecipeCard';
-import '../AdditionalApp.css';
 
 const COMMON_INGREDIENTS = [
   'Eggs', 'Flour', 'Milk', 'Sugar', 'Butter', 'Salt', 'Pepper', 'Garlic',
