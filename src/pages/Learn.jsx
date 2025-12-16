@@ -32,7 +32,7 @@ export default function Learn() {
             onClick={() => handleArticleClick(article)}
           >
             <div className="article-image">
-              <div className="article-image-emoji">{article.image}</div>
+              <img src={article.image} alt={article.title} />
             </div>
             
             <div className="article-info">

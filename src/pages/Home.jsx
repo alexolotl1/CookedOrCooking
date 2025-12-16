@@ -48,7 +48,7 @@ export default function Home() {
 
       <div className="home-user-section">
         <div className="user-header">
-          <div className="profile-image-placeholder"></div>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK68cj0Hcizmq5Y6AN6m5bOlvOi0ab3QvdTw&s" className="profile-image-placeholder"></img>
           <div className="user-info-column">
             <h2 className="user-guest-text">Guest</h2>
             <p className="user-join-text">Joined on Dec 3 2025</p>
@@ -88,7 +88,10 @@ export default function Home() {
           <div className="last-viewed-grid">
             {lastViewedRecipes.map(recipe => (
               <div key={recipe.id} className="last-viewed-card">
-                <div className="last-viewed-emoji">{recipe.image}</div>
+                <div className="last-viewed-image">
+                  <img src={recipe.imageUrl} alt={recipe.name}></img>
+                </div>
+                
                 <p className="last-viewed-name">{recipe.name}</p>
               </div>
             ))}

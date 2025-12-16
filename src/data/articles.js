@@ -4,7 +4,7 @@ export const articles = [
     title: "How to Perfectly Sear a Steak",
     author: "Chef Marcus",
     readTime: "5 min read",
-    image: "🥩",
+    image: "https://kalejunkie.com/wp-content/uploads/2023/02/Pan-SearedSteak_Shot2_54.jpg",
     description: "Master the art of creating a perfect golden crust on your steaks. Learn the science behind searing, temperature control, and timing.",
     content: `
       <h2>How to Perfectly Sear a Steak</h2>
@@ -41,7 +41,7 @@ export const articles = [
     title: "Knife Skills: Cuts Every Cook Should Know",
     author: "Chef Elena",
     readTime: "8 min read",
-    image: "🔪",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYFrmFBGbe8MNxELy-FDm04LWSevCI1LSUzA&s",
     description: "Learn the essential knife cuts used in professional kitchens. Master julienne, brunoise, chiffonade, and more.",
     content: `
       <h2>Knife Skills: Cuts Every Cook Should Know</h2>
@@ -80,7 +80,7 @@ export const articles = [
     title: "Understanding Salt: The Baker's Secret",
     author: "Chef David",
     readTime: "6 min read",
-    image: "🧂",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFPYUI-aJo7IiHwVv7T88V7kpO0-LB6-s-Ow&s",
     description: "Discover how salt transforms baked goods. Learn about salt types, measurements, and its role in gluten development.",
     content: `
       <h2>Understanding Salt: The Baker's Secret</h2>
@@ -117,7 +117,7 @@ export const articles = [
     title: "Emulsions: The Science of Sauces",
     author: "Chef Sophie",
     readTime: "7 min read",
-    image: "🥛",
+    image: "https://static.india.com/wp-content/uploads/2015/07/shutterstock_182370455.jpg",
     description: "Master emulsified sauces like hollandaise and mayonnaise. Understand the chemistry and how to rescue broken sauces.",
     content: `
       <h2>Emulsions: The Science of Sauces</h2>

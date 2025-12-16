@@ -809,8 +809,8 @@
   }
 
   .profile-image-placeholder {
-    width: 80px;
-    height: 80px;
+    width: 30px;
+    height: 30px;
   }
 
   .user-guest-text {
@@ -1076,13 +1076,12 @@
 }
 
 .last-viewed-card {
-  background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
-  padding: 1rem;
+  background: #8FB3DD;
   border-radius: 8px;
-  text-align: center;
+  overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid #2ecc71;
+  border: none;
 }
 
 .last-viewed-card:hover {
@@ -1090,16 +1089,29 @@
   box-shadow: 0 4px 12px rgba(30, 132, 73, 0.2);
 }
 
-.last-viewed-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+.last-viewed-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.last-viewed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .last-viewed-name {
-  color: #1e8449;
+  color: #ffffff;
   font-weight: 600;
   margin: 0;
+  padding: 0.75rem;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .achievements-section {
@@ -1269,6 +1281,13 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+.article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .article-image-emoji {

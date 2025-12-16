@@ -1,5 +1,5 @@
 import React from 'react';
-import { recordStepCompleted } from '../data/userStats';
+import { recordStepCompleted, recordRecipeMade } from '../data/userStats';
 
 export default function RecipeSteps({ recipe, onClose }) {
   const [currentStep, setCurrentStep] = React.useState(0);
@@ -22,6 +22,7 @@ export default function RecipeSteps({ recipe, onClose }) {
 
   const handleFinish = () => {
     recordStepCompleted();
+    recordRecipeMade();
     alert(`Congratulations! You've completed ${recipe.name}! 🎉`);
     onClose();
   };
